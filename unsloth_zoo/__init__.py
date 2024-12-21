@@ -24,14 +24,11 @@ del find_spec
 
 import os
 if not ("UNSLOTH_IS_PRESENT" in os.environ):
-    raise ImportError("Please install Unsloth via `pip install unsloth`!")
+    print("**Unsloth not detected!**")
+    raise ImportError("Please install Unsloth via `pip install unsloth` to unlock 2x faster free finetuning!")
 pass
 
-try:
-    print("🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.")
-except:
-    print("Unsloth: Will patch your computer to enable 2x faster free finetuning.")
-pass
+
 # Log Unsloth-Zoo Utilities
 os.environ["UNSLOTH_ZOO_IS_PRESENT"] = "1"
 del os
