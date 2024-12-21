@@ -25,6 +25,7 @@ __all__ = [
     "patch_compiled_autograd",
 ]
 
+from . import __version__
 from .compiler import UNSLOTH_COMPILE_LOCATION
 
 
@@ -91,11 +92,8 @@ def patch_torch_compile(debug = True, O3 = False, ignore_errors = True):
         torch._logging.set_logs(dynamo = logging.CRITICAL, inductor = logging.CRITICAL)
         torch._dynamo.config.verbose = False
     pass
-    try:
-        print(f"🦥 Unsloth Zoo will now patch everything{DEBUGGING} to make training faster!")
-    except:
-        print(f"Unsloth Zoo will now patch everything{DEBUGGING} to make training faster!")
-    pass
+    # spaces due to banner that unsloth prints
+    print(f"              Unsloth_zoo {__version__}: Patching torch compile flags{DEBUGGING}")
 
     os.environ["UNSLOTH_PATCHED"] = "1"
     # See https://pytorch.org/tutorials/recipes/torch_compile_caching_tutorial.html
