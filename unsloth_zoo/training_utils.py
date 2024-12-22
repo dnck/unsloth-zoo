@@ -233,12 +233,18 @@ def unsloth_train(trainer):
 
     step = 0
     accumulated_loss = torch.zeros(1, device = "cuda:0", dtype = torch.float32)[0]
-    debug_info = \
-        f'==((====))==  Unsloth - 2x faster free finetuning | Num GPUs = {training_args.world_size}\n'\
-        f'    \\   /|    Num examples = {n_training_samples:,} | Num Epochs = {num_train_epochs:,}\n'\
-        f'O^O/ \\_/ \\    Batch size per device = {training_args.per_device_train_batch_size:,} | Gradient Accumulation steps = {training_args.gradient_accumulation_steps}\n'\
-        f'\\        /    Total batch size = {total_train_batch_size:,} | Total steps = {max_steps:,}\n'\
-        f' "-____-"     Number of trainable parameters = {n_parameters_to_train:,}'
+
+    debug_info = (
+        f"**Unsloth-Zoo: training_utils.py**\n"
+        f"- Num GPUs = {training_args.world_size}\n"
+        f"- Num examples = {n_training_samples:,}\n"
+        f"- Num Epochs = {num_train_epochs:,}\n"
+        f"- Batch size per device = {training_args.per_device_train_batch_size:,}\n"
+        f"- Gradient Accumulation steps = {training_args.gradient_accumulation_steps}\n"
+        f"- Total batch size = {total_train_batch_size:,} | Total steps = {max_steps:,}\n"
+        f"- Total steps = {max_steps:,}\n"
+        f"- Number of trainable parameters = {n_parameters_to_train:,}"
+    )
     print(debug_info)
 
     # Get per epoch counter
